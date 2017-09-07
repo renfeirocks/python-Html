@@ -1,0 +1,163 @@
+***EPIC STORY***
+
+A course administrator needs to be able to access a survey system which allows them to generate questions to survey courses on offer. Students respond to the survey through a link and the system generates a flat file for the responses. If required, the survey results can be made public. 
+
+***USER STORIES***
+
+ID: US1
+
+Name: Login to the Online Survey System.
+Requirements: N/A
+Description:
+As an admin I need to login to the survey system to create/edit questions in the pool AND create survey for courses.
+
+Actor: Admin
+
+Participating: Database
+
+Acceptance Criteria:
+1. Admin goes to Login page in the Online Survey Website
+2. Admin user fill "Username" and "Password" fields and Clicks on "LOG IN"
+3. System checks the username and password with the records on database.
+4. If Correct: Enters to the Online Survey "Home Page".
+5. If not correct, Displays "User or pass seems to be incorrect. Please re-check and enter again."
+
+----------------------------------------------------------------------------------------------------------------------------
+
+ID: US2
+
+Name: Add questions into a generic survey pool
+Requirements: US1
+Description: As an admin I need to create a pool of generic multiple choice survey questions so I can choose questions required to gain specific feedback to improve my course.
+
+Actor: Admin
+Participating: Database
+
+Acceptance Criteria: 
+Admin clicks on the “Survey pool” button on the homepage.
+The system displays two sections: “Click to add a new question” and “Previously added questions”.
+In the Previously added questions” section, it displays a list of all questions that has been added. If no questions have been previously added it will display “Currently no questions in the pool.”
+Admin clicks the “Click to add a new question” button.
+The page displays a form with the fields: Question, Answer and Click to add another question.
+Admin clicks on the “Question” field and fills in the question.
+Admin clicks on the “Answer” field and fills in the answer. The admin can choose how many answer fields are required by clicking on “+” button under the last used answer field.
+Admin has the choice to add more questions by clicking “Click to add another question”
+The admin clicks submits.
+The system checks if there are issues with the input, display “Wrong format, please check the fields.”
+Else the system displays “Successfully added to survey pool”
+If the system successfully takes the input, the page redirects to the “Survey pool” page which shows the pool with the updated questions under “Previously added questions”
+
+
+----------------------------------------------------------------------------------------------------------------------------
+ID: US3 
+
+Name: Edit and view surveys for courses offered in a particular semester 
+Requirements: US1, US2
+User-Story Description: As an admin, I need to edit and view the survey questions for a particular course and semester, so I can choose questions from the pool to be included in the survey that are relevant to the course chosen
+
+Actor: Admin
+Participating: Database
+
+Acceptance criteria:
+Admin clicks on the “Edit/View Course Survey” button 
+The system provides a drop-down list with all possible semesters that can be chosen 
+Admin chooses relevant semester
+The system checks for courses offered in chosen semester
+If more than 0 courses offered: Display courses in alphabetical order in a numbered list 
+If 0 courses offered: Display “The chosen semester has no courses offered at this time. Please choose another semester.”
+Admin clicks on a course displayed
+System opens up a new window containing all current chosen survey questions and a “View Sample”, “Find Question” and “Submit” button
+Each question has a “checkbox” located at the beginning of the question
+If checkbox “ticked”: Question is included in survey
+If checkbox not “ticked”: Question is not included in the survey
+Admin clicks on “View Sample” button
+System opens up a new window displaying questions in format to be presented to respondent
+Admin clicks on “Find Question” button
+System opens up a new window containing a field for admin input and a “Search” and “Submit” button
+Admin enters keywords into “field for input” and clicks on “Search” button
+System compares text entered in the field with questions in the pool
+If there are no successful matches: Display “Unable to find a question containing “___”
+“___” represents admin input 
+If there are >1 successful matches: Display all relevant questions in a list alphabetically ordered with a checkbox at the beginning of each question
+A successful match is made when the text in field appears > 0 times in a question
+Admin ticks the checkbox of relevant questions and clicks “Submit”
+System adds chosen questions into current list of questions chosen for survey 
+System refreshes window containing all current chosen survey questions and closes the current window
+Admin clicks on “Submit” button 
+System officially updates current survey questions displayed to respondent 
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+ID: US4 
+
+Name: Create a public access link to survey for relevant course
+Requirements: US1, US2. US3
+User-Story Description: As an admin I need to create a publicly accessible link to the survey for a particular course, so that respondents are able to respond to the survey
+
+Actor: Admin
+Participating: Online survey webpage
+Acceptance criteria:
+Once a survey is ready to publish, admin clicks on checkbox located next to relevant course and clicks “Submit”
+System checks for no. of questions in survey for each course
+If questions in the survey are <1: Display error “ No question are set for ___”.
+___ represents the course code without questions in the survey 
+Else display “The survey questions have been submitted successfully!”.
+A link to this survey will appear in the “courses.csv” file in column B next to the relevant course name and semester chosen
+
+----------------------------------------------------------------------------------------------------------------------------
+
+ID: US5
+
+Name : Find survey link and submit the answered questions in survey in particular course
+Actor : Respondent
+Participating: Database
+User story description : A link for the respondent to access to the survey and to make sure the respondent finished all the questions and submitted the survey.
+
+ 
+Acceptance Criteria :
+Respondent clicks on provided survey link for particular course offering.
+Respondent will access to the survey page.
+Respondent answers the survey questions.
+After finish answering questions respondent clicks on "Submit".
+Display message "Thank you for doing the survey".
+The answers will be collected in flat file for the particular course as “Result”.
+
+------------------------------------------------------------------------------------------------------------------------------
+ 
+ID: US6
+ 
+Name : View to flat file responses for any particular course.
+Actor: Admin
+Participating: Database
+User Story Description: As an admin I need to login to the survey system and check the responses to each question made to improve my course.
+
+Acceptance criteria:
+Admin needs to login to the survey system in the online survey website;
+Admin click “Result” button.
+Admin search for particular course they are interested with.
+Admin could view a statistical report for the particular course.
+
+----------------------------------------------------------------------------------------------------------------------------
+
+ID: US7
+
+Name: view the responses of the survey via provided link
+Actor: Respondent
+Participating: System, Respondent
+Description: As a respondent, I want to view the responses of the survey made by other people, so I can compare my experience. 
+
+Acceptance criteria:
+Respondent click the linkage provided by the admin.
+Respondent could access to platform for survey results.
+The result of certain course could be viewed. Respondent can think about their experience.
+
+
+
+
+
+
+
+
+
+
